@@ -3,48 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Günün Sözü</title>
+    <title>Wolfbey</title>
     <style>
-        /* Sayfa merkezleme ve arka plan */
         body, html {
             height: 100%;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #121212; /* Koyu modern bir arka plan */
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d; /* Biraz daha koyu bir arka plan */
+            color: #e0e0e0;
+            font-family: 'Georgia', serif; /* Edebi fontu koruduk */
             text-align: center;
-            padding: 20px;
+            overflow: hidden;
         }
 
-        /* Sözün stili */
-        .quote-container {
-            max-width: 800px;
+        .container {
+            max-width: 750px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column; /* Öğeleri dikey hizala */
+            align-items: center;
         }
 
-        h1 {
-            font-weight: 300;
-            font-size: 2.5rem;
-            line-height: 1.4;
+        #quote-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            min-height: 250px; /* Hz. Ömer'in uzun sözü için alanı koru */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: pre-line; /* Satır boşluklarını korur */
+            transition: opacity 0.5s ease;
+            margin-bottom: 20px; /* Hashtag ile mesafe */
+        }
+
+        /* Yeni eklenen hashtag stili */
+        .hashtag {
+            color: #00ced1; /* Turkuaz renk (DarkTurquoise) */
+            font-family: 'Courier New', Courier, monospace; /* Daha vurgulu bir font */
+            font-weight: bold;
+            font-size: 1.2rem;
             letter-spacing: 1px;
-            /* Hafif bir belirme efekti */
-            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 40px; /* Buton ile mesafe */
         }
 
-        /* Animasyon */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        button {
+            background: none;
+            border: 1px solid #444;
+            color: #888;
+            padding: 10px 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
+
+        button:hover {
+            border-color: #fff;
+            color: #fff;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .fade-out { opacity: 0; }
     </style>
 </head>
 <body>
 
-    <div class="quote-container">
-        <h1>"Sadece güneşli günlerde yürürsen, hedefine asla varamazsın."</h1>
+    <div class="container">
+        <div id="quote-text">"Sadece güneşli günlerde yürürsen, hedefine asla varamazsın."</div>
+        
+        <div class="hashtag">#freeuyghur</div>
+        
+        <button onclick="nextQuote()">Sonraki Söz</button>
     </div>
+
+    <script>
+        const quotes = [
+            "\"Sadece güneşli günlerde yürürsen, hedefine asla varamazsın.\"",
+            "Hz. Ömer dedi ki:\n\nÇok gülenin heybeti az olur...\nŞaka yapan hafife alınır...\nBir şeyi çok yapan onunla anılır...\nÇok konuşanın yanlışı çok olur...\nYanlışı çok olanın hayâsı azalır...\nHayâsı az olanın takvâsı az olur...\nTakvâsı az olanın kalbi ölür..."
+        ];
+
+        let currentIndex = 0;
+
+        function nextQuote() {
+            const textElement = document.getElementById('quote-text');
+            
+            // Söz için geçiş efekti
+            textElement.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % quotes.length;
+                textElement.innerText = quotes[currentIndex];
+                textElement.classList.remove('fade-out');
+            }, 500);
+        }
+    </script>
 
 </body>
 </html>
