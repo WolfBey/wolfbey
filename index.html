@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wolfbey</title>
+    <title>Sözler</title>
     <style>
         body, html {
             height: 100%;
@@ -11,9 +11,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #0d0d0d; /* Biraz daha koyu bir arka plan */
+            background-color: #0d0d0d;
             color: #e0e0e0;
-            font-family: 'Georgia', serif; /* Edebi fontu koruduk */
+            font-family: 'Georgia', serif;
             text-align: center;
             overflow: hidden;
         }
@@ -22,30 +22,39 @@
             max-width: 750px;
             padding: 40px;
             display: flex;
-            flex-direction: column; /* Öğeleri dikey hizala */
+            flex-direction: column;
             align-items: center;
         }
 
         #quote-text {
             font-size: 1.8rem;
             line-height: 1.6;
-            min-height: 250px; /* Hz. Ömer'in uzun sözü için alanı koru */
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            white-space: pre-line; /* Satır boşluklarını korur */
+            white-space: pre-line;
             transition: opacity 0.5s ease;
-            margin-bottom: 20px; /* Hashtag ile mesafe */
+            margin-bottom: 20px;
         }
 
-        /* Yeni eklenen hashtag stili */
         .hashtag {
-            color: #00ced1; /* Turkuaz renk (DarkTurquoise) */
-            font-family: 'Courier New', Courier, monospace; /* Daha vurgulu bir font */
+            color: #00ced1; /* Turkuaz */
+            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
             font-size: 1.2rem;
-            letter-spacing: 1px;
-            margin-bottom: 40px; /* Buton ile mesafe */
+            letter-spacing: 2px;
+            margin-bottom: 5px; /* Altındaki isme yakın olması için */
+        }
+
+        /* Yeni eklediğimiz Wolfbey stili */
+        .signature {
+            color: #888; /* Hafif gri, çok göz almasın ama şık dursun */
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
         }
 
         button {
@@ -54,7 +63,7 @@
             color: #888;
             padding: 10px 25px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             transition: all 0.3s;
             text-transform: uppercase;
@@ -75,6 +84,7 @@
         <div id="quote-text">"Sadece güneşli günlerde yürürsen, hedefine asla varamazsın."</div>
         
         <div class="hashtag">#freeuyghur</div>
+        <div class="signature">Wolfbey</div>
         
         <button onclick="nextQuote()">Sonraki Söz</button>
     </div>
@@ -89,8 +99,6 @@
 
         function nextQuote() {
             const textElement = document.getElementById('quote-text');
-            
-            // Söz için geçiş efekti
             textElement.classList.add('fade-out');
             
             setTimeout(() => {
