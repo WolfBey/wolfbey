@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Günün Sözü</title>
+    <style>
+        /* Sayfa merkezleme ve arka plan */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Koyu modern bir arka plan */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Sözün stili */
+        .quote-container {
+            max-width: 800px;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 2.5rem;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            /* Hafif bir belirme efekti */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Animasyon */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quote-container">
+        <h1>"Sadece güneşli günlerde yürürsen, hedefine asla varamazsın."</h1>
+    </div>
+
+</body>
+</html>
