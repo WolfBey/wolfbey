@@ -3,56 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sözler</title>
+    <title>Sözler - Wolfbey</title>
     <style>
         body, html {
-            height: 100%; margin: 0; display: flex; justify-content: center; align-items: center;
-            background-color: #0d0d0d; color: #e0e0e0; font-family: 'Georgia', serif; text-align: center;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Georgia', serif;
+            text-align: center;
         }
-        .container { max-width: 750px; padding: 40px; display: flex; flex-direction: column; align-items: center; }
-        #quote-text { font-size: 1.8rem; line-height: 1.6; min-height: 250px; display: flex; align-items: center; justify-content: center; white-space: pre-line; transition: opacity 0.5s ease; margin-bottom: 20px; }
-        .hashtag { color: #00ced1; font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 5px; }
-        .signature { color: #888; font-family: 'Arial', sans-serif; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 35px; }
-        button { background: none; border: 1px solid #444; color: #888; padding: 10px 25px; cursor: pointer; font-size: 0.8rem; letter-spacing: 2px; transition: all 0.3s; text-transform: uppercase; }
-        button:hover { border-color: #fff; color: #fff; background-color: rgba(255,255,255,0.05); }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #quote-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            min-height: 300px; /* Sözlerin zıplamaması için alan ayırdık */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: pre-line;
+            transition: opacity 0.4s ease;
+            margin-bottom: 20px;
+        }
+
+        .hashtag {
+            color: #00ced1;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .signature {
+            color: #888;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        /* BUTON BURADA - Daha belirgin yaptım */
+        .next-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid #444;
+            color: #fff;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+
+        .next-btn:hover {
+            border-color: #00ced1; /* Üzerine gelince turkuaz olur */
+            background-color: rgba(0, 206, 209, 0.1);
+        }
+
         .fade-out { opacity: 0; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div id="quote-text">"Yükleniyor..."</div>
+        <div id="quote-text"></div>
+        
         <div class="hashtag">#freeuyghur</div>
         <div class="signature">Wolfbey</div>
+        
+        <button class="next-btn" onclick="nextQuote()">Sonraki Söz</button>
     </div>
 
     <script>
-        // BURASI SÖZ EKLEME ALANI
+        // SÖZ LİSTESİ
         const quotes = [
             "\"Sadece güneşli günlerde yürürsen, hedefine asla varamazsın.\"",
-            
-            "Hz. Ömer dedi ki:\n\nÇok gülenin heybeti az olur...\nŞaka yapan hafife alınır...\nBir şeyi çok yapan onunla anılır...\nÇok konuşanın yanlışı çok olur...\nYanlışı çok olanın hayâsı azalır...\nHayâsı az olanın takvâsı az olur...\nTakvâsı az olanın kalbi ölür...",
-            
-            " ",
-            " ",
-            // İstediğin kadar bu şekilde aşağıya doğru ekleme yapabilirsin. 
-            // Sadece her sözden sonra virgül (,) koymayı unutma!
+            "Hz. Ömer dedi ki:\n\nÇok gülenin heybeti az olur...\nŞaka yapan halaife alınır...\nBir şeyi çok yapan onunla anılır...\nÇok konuşanın yanlışı çok olur...\nYanlışı çok olanın hayâsı azalır...\nHayâsı az olanın takvâsı az olur...\nTakvâsı az olanın kalbi ölür...",
+            "Buraya yeni sözünü ekleyebilirsin knk..."
         ];
 
         let currentIndex = 0;
         const textElement = document.getElementById('quote-text');
-        
-        // İlk açılışta ilk sözü göster
-        textElement.innerText = quotes[0];
+
+        // Sayfa yüklendiğinde ilk sözü basar
+        window.onload = function() {
+            textElement.innerText = quotes[0];
+        };
 
         function nextQuote() {
-            textElement.classList.add('fade-out');
+            textElement.classList.add('fade-out'); // Önce karart
+            
             setTimeout(() => {
                 currentIndex = (currentIndex + 1) % quotes.length;
                 textElement.innerText = quotes[currentIndex];
-                textElement.classList.remove('fade-out');
-            }, 500);
+                textElement.classList.remove('fade-out'); // Sonra geri getir
+            }, 400);
         }
     </script>
+
 </body>
 </html>
